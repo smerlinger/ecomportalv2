@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hit {
+  display: grid;
+  width: 100%;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .hit {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hit {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding: 0 2.5rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    padding: 0 8rem;
+  }
+}

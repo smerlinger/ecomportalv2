@@ -1,0 +1,29 @@
+.logo {
+  display: flex;
+  border-color: #e5e7eb;
+  min-height: 3.5rem;
+  min-width: 3.5rem;
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 0.5rem;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.fallbackImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-color: #e5e7eb;
+  border-radius: 0.5rem;
+  color: #e5e7eb;
+  background-color: #709771;
+  font-size: 2rem;
+  font-weight: 800;
+}

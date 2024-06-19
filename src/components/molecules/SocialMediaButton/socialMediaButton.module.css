@@ -1,0 +1,15 @@
+.iconButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0.5rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+}
+
+.iconButton:hover {
+  color: #709771;
+  border: 0.1rem solid #709771;
+}

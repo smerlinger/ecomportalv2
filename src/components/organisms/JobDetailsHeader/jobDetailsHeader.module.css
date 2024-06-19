@@ -1,0 +1,59 @@
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 0.5rem;
+}
+
+.position {
+  display: flex;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 2.5rem;
+}
+
+.companyName {
+  display: flex;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+.detailGrid {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .detailGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .detailGrid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding: 0 2.5rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    padding: 0 8rem;
+  }
+}

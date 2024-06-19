@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2rem;
+}
+
+.applyButton {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding: 0 2.5rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    padding: 0 8rem;
+  }
+}

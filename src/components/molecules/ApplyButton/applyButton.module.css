@@ -1,0 +1,40 @@
+.link {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.button {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  border: 2px solid #709771;
+  background-color: #709771;
+  color: rgba(255, 255, 255, 0.88);
+  padding: 0.625em;
+  font-weight: 600;
+  gap: 0.5rem;
+  width: 90%;
+  max-width: 800px;
+}
+
+@media (min-width: 768px) {
+  .button {
+    width: 50%;
+    max-width: 800px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .link {
+    display: none;
+  }
+  .button {
+    width: fit-content;
+    padding: 0.625em 2rem;
+  }
+}

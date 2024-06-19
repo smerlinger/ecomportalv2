@@ -1,0 +1,42 @@
+.wrapper {
+  position: relative;
+  margin-top: 1rem;
+}
+
+.container {
+  z-index: 10;
+  margin: 0 auto;
+  max-width: 1280px;
+  text-align: center;
+}
+
+.heading {
+  margin-bottom: 2.5rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01562em;
+}
+
+.subHeading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    position: relative;
+    padding-top: 7rem;
+  }
+  .heading {
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 3.75rem;
+  }
+  .subHeading {
+    margin-top: 1rem;
+  }
+}

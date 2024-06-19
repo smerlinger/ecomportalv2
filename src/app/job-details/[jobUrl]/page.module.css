@@ -1,0 +1,52 @@
+.wrapper {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: var(--font-montserrat);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.applyButton {
+  display: none;
+}
+
+.applyButton div {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.position {
+  font-size: 1.5rem;
+}
+
+.companyName {
+  font-size: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .applyButton {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.825rem 8rem;
+    z-index: 100;
+    background: white;
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
+  }
+}

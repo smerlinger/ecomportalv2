@@ -1,0 +1,67 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 3rem;
+  border-top: 0.1rem solid rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+  width: 13rem;
+}
+
+.mainContainer div {
+  width: 100%;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.socialMediaContainer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.listContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.375rem;
+  width: 100%;
+  padding: 2rem;
+  border-top: 0.1rem solid rgba(0, 0, 0, 0.15);
+}
+
+.listTitle {
+  font-size: 0.5rem;
+  color: black;
+  text-decoration: underline;
+}
+
+.listItem {
+  font-size: 0.5rem;
+  color: rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease-in-out;
+}
+
+@media (min-width: 640px) {
+  .listContainer {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0.25rem;
+    padding: 3rem;
+  }
+
+  .listTitle,
+  .listItem {
+    font-size: 0.75rem;
+  }
+
+  .listItem:hover {
+    color: rgba(0, 0, 0);
+    text-decoration: underline;
+  }
+}

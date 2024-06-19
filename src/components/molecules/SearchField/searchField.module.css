@@ -1,0 +1,99 @@
+.root {
+  display: flex;
+  height: 3rem;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.field {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid #d1d5db;
+}
+
+.control {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  border-radius: 0.375rem;
+  padding: 0 1rem;
+  line-height: 1.75rem;
+  font-size: 1.25rem;
+  letter-spacing: 0.025em;
+  font-family: var(--font-montserrat);
+  font-weight: 400;
+  outline: none;
+  animation: typing 2s steps(40, end);
+  transition: all 0.2s ease-in-out;
+}
+
+.control:focus {
+  box-shadow: 0 0 0 3px #5a795a;
+}
+
+.submit {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid white;
+  background-color: #709771;
+  padding: 0 1.5rem;
+  color: white;
+  transition: all 200ms;
+  outline: none;
+}
+
+.submit span {
+  display: none;
+  font-family: var(--font-montserrat);
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: white;
+}
+
+.submit:hover {
+  background-color: #5a795a;
+}
+
+.submit:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #5a795a;
+  border-radius: 0.5rem;
+}
+
+/* medium */
+@media (min-width: 768px) {
+  .root {
+    margin-top: 2rem;
+  }
+  .submit span {
+    display: inline-block;
+  }
+}
+
+/* large */
+@media (min-width: 1024px) {
+  .root {
+    gap: 1.25rem;
+  }
+
+  .submit {
+    padding: 0 2.25rem;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}

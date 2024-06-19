@@ -1,0 +1,7 @@
+.iconButton {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-montserrat);
+  gap: 0.5rem;
+  border: 2px solid red;
+}
