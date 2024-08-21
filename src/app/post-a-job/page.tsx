@@ -23,7 +23,7 @@ export default function Page() {
           </Text>
           <IconButton
             className={styles.postAJobButton}
-            onClick={() => router.push('/post-a-job')}
+            onClick={() => router.push('/post-a-job/form')}
           >
             Post A Job
           </IconButton>

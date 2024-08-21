@@ -1,14 +1,14 @@
 import React, { InputHTMLAttributes, forwardRef, useMemo } from 'react';
-import styles from './editableTextInput.module.css';
+import styles from './editableInput.module.css';
 
-interface EditableTextInputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface EditableInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string | undefined;
-  value?: string;
+  value?: string | number;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-const EditableTextInput = forwardRef<HTMLInputElement, EditableTextInputProps>(
+export const EditableInput = forwardRef<HTMLInputElement, EditableInputProps>(
   ({ label, error, value, onChange, placeholder, disabled, ...props }, ref) => {
     return (
       <div>
@@ -27,5 +27,3 @@ const EditableTextInput = forwardRef<HTMLInputElement, EditableTextInputProps>(
     );
   }
 );
-
-export default EditableTextInput;
