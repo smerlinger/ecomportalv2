@@ -7,11 +7,11 @@ import EditableTextInput from '@/components/molecules/EditableTextInput';
 
 type PostAJobForm = z.infer<typeof PostAJobFormSchema>;
 export default function Page() {
-  // const { register, handleSubmit, control, getValues } = useForm<PostAJobForm>({
-  //   resolver: zodResolver(PostAJobFormSchema),
-  // });
-  const { register, handleSubmit, control, getValues } = useForm();
-  const onSubmit = (data: any) => alert(JSON.stringify(data));
+  const { handleSubmit, control, getValues, formState: { errors } } = useForm<PostAJobForm>({
+    resolver: zodResolver(PostAJobFormSchema),
+  });
+  // const { register, handleSubmit, control, getValues } = useForm();
+  const onSubmit = (data: any) => console.log(data);
 
   return (
     <div>
@@ -22,11 +22,13 @@ export default function Page() {
           control={control}
           render={({ field }) => (
             <EditableTextInput
+              {...field}
               label={'Job Title'}
-              value={getValues('jobInfo.title')}
+              // value={field.value}
+              value={getValues('jobInfo.title') ?? ''}
               onChange={field.onChange}
               // error={field.error?.message}
-              // ref={field.ref}
+              ref={field.ref}
             />
           )}
         />
