@@ -1,5 +1,6 @@
 import React, { InputHTMLAttributes, forwardRef, useMemo } from 'react';
 import styles from './editableInput.module.css';
+import { ErrorText } from '@/components/atoms/ErrorText';
 
 interface EditableInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -11,8 +12,8 @@ interface EditableInputProps extends InputHTMLAttributes<HTMLInputElement> {
 export const EditableInput = forwardRef<HTMLInputElement, EditableInputProps>(
   ({ label, error, value, onChange, placeholder, disabled, ...props }, ref) => {
     return (
-      <div>
-        {label && <label>{label}</label>}
+      <div className={styles.container}>
+        {label && <label className={styles.labelText}>{label}</label>}
         <input
           ref={ref}
           className={styles.input}
@@ -22,7 +23,7 @@ export const EditableInput = forwardRef<HTMLInputElement, EditableInputProps>(
           disabled={disabled}
           {...props}
         />
-        {error && <span>{error}</span>}
+        {error && <ErrorText>{error}</ErrorText>}
       </div>
     );
   }

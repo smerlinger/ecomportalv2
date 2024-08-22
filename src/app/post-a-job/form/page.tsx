@@ -9,6 +9,7 @@ import TextArea from '@/components/molecules/TextArea';
 import styles from './page.module.css';
 import { Banner } from '@/components/atoms/Banner';
 import { Header } from '@/components/organisms/Header';
+import FileUpload from '@/components/FIleUpload';
 
 type PostAJobForm = z.infer<typeof PostAJobFormSchema>;
 const jobCategories = [
@@ -42,7 +43,7 @@ export default function Page() {
       <div className={styles.container}>
         <Header />
         <h1>Post a Job</h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <Controller
             name="companyInfo.email"
             control={control}
@@ -108,10 +109,11 @@ export default function Page() {
               <Select
                 {...field}
                 label={'Job Category'}
-                options={jobCategories.map((category) => ({
+                options={[{ value: '', label: 'Select a category', disabled: true },
+                ...jobCategories.map((category) => ({
                   value: category,
                   label: category,
-                }))}
+                }))]}
                 value={getValues('jobInfo.category') ?? ''}
                 onChange={field.onChange}
                 error={errors.jobInfo?.category?.message}
@@ -119,86 +121,92 @@ export default function Page() {
               />
             )}
           />
-          <Controller
-            name="jobInfo.location.city"
-            control={control}
-            render={({ field }) => (
-              <EditableInput
-                {...field}
-                label={'City'}
-                value={getValues('jobInfo.location.city') ?? ''}
-                onChange={field.onChange}
-                error={errors.jobInfo?.location?.city?.message}
-                ref={field.ref}
+          <div className={styles.group}>
+            <label className={styles.labelText}>Location</label>
+            <div className={styles.subfields} >
+              <Controller
+                name="jobInfo.location.city"
+                control={control}
+                render={({ field }) => (
+                  <EditableInput
+                    {...field}
+                    label={'City'}
+                    value={getValues('jobInfo.location.city') ?? ''}
+                    onChange={field.onChange}
+                    error={errors.jobInfo?.location?.city?.message}
+                    ref={field.ref}
+                  />
+                )}
               />
-            )}
-          />
-          <Controller
-            name="jobInfo.location.state"
-            control={control}
-            render={({ field }) => (
-              <EditableInput
-                {...field}
-                label={'State'}
-                // value={field.value}
-                value={getValues('jobInfo.location.state') ?? ''}
-                onChange={field.onChange}
-                error={errors.jobInfo?.location?.state?.message}
-                ref={field.ref}
+              <Controller
+                name="jobInfo.location.state"
+                control={control}
+                render={({ field }) => (
+                  <EditableInput
+                    {...field}
+                    label={'State'}
+                    // value={field.value}
+                    value={getValues('jobInfo.location.state') ?? ''}
+                    onChange={field.onChange}
+                    error={errors.jobInfo?.location?.state?.message}
+                    ref={field.ref}
+                  />
+                )}
               />
-            )}
-          />
-          <Controller
-            name="jobInfo.location.country"
-            control={control}
-            render={({ field }) => (
-              <EditableInput
-                {...field}
-                label={'Country'}
-                // value={field.value}
-                value={getValues('jobInfo.location.country') ?? ''}
-                onChange={field.onChange}
-                error={errors.jobInfo?.location?.country?.message}
-                ref={field.ref}
+              <Controller
+                name="jobInfo.location.country"
+                control={control}
+                render={({ field }) => (
+                  <EditableInput
+                    {...field}
+                    label={'Country'}
+                    // value={field.value}
+                    value={getValues('jobInfo.location.country') ?? ''}
+                    onChange={field.onChange}
+                    error={errors.jobInfo?.location?.country?.message}
+                    ref={field.ref}
+                  />
+                )}
               />
-            )}
-          />
-          <Controller
-            name="jobInfo.employeeCount"
-            control={control}
-            render={({ field }) => (
-              <EditableInput
-                {...field}
-                label={'Number of Positions'}
-                type="number"
-                value={getValues('jobInfo.employeeCount') ?? 0}
-                onChange={(e) => field.onChange(Number(e.target.value))}
-                error={errors.jobInfo?.employeeCount?.message}
-                ref={field.ref}
-              />
-            )}
-          />
-          <Controller
-            name="jobInfo.jobType"
-            control={control}
-            render={({ field }) => (
-              <Select
-                {...field}
-                label={'Job Type'}
-                options={[
-                  { value: '', label: 'Select a job type' },
-                  ...jobTypes.map((type) => ({
-                    value: type,
-                    label: type,
-                  })),
-                ]}
-                value={getValues('jobInfo.jobType') ?? ''}
-                onChange={field.onChange}
-                error={errors.jobInfo?.jobType?.message}
-                ref={field.ref}
-              />
-            )}
-          />
+            </div>
+          </div>
+          <div className={styles.subfields}>
+            <Controller
+              name="jobInfo.employeeCount"
+              control={control}
+              render={({ field }) => (
+                <EditableInput
+                  {...field}
+                  label={'Number of Positions'}
+                  type="number"
+                  value={getValues('jobInfo.employeeCount') ?? 0}
+                  onChange={(e) => field.onChange(Number(e.target.value))}
+                  error={errors.jobInfo?.employeeCount?.message}
+                  ref={field.ref}
+                />
+              )}
+            />
+            <Controller
+              name="jobInfo.jobType"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  label={'Job Type'}
+                  options={[
+                    { value: '', label: 'Select a job type', disabled: true },
+                    ...jobTypes.map((type) => ({
+                      value: type,
+                      label: type,
+                    })),
+                  ]}
+                  value={getValues('jobInfo.jobType') ?? ''}
+                  onChange={field.onChange}
+                  error={errors.jobInfo?.jobType?.message}
+                  ref={field.ref}
+                />
+              )}
+            /></div>
           <Controller
             name="jobInfo.applicationUrl"
             control={control}
@@ -213,34 +221,51 @@ export default function Page() {
               />
             )}
           />
+          <div className={styles.group}>
+            <label className={styles.labelText}>Salary Range</label>
+            <div className={styles.subfields} >
+              <Controller
+                name="jobInfo.salary.min"
+                control={control}
+                render={({ field }) => (
+                  <EditableInput
+                    {...field}
+                    label={'Min'}
+                    type="number"
+                    value={getValues('jobInfo.salary.min') ?? 0}
+                    onChange={(e) => field.onChange(Number(e.target.value))}
+                    error={errors.jobInfo?.salary?.min?.message}
+                    ref={field.ref}
+                  />
+                )}
+              />
+              <Controller
+                name="jobInfo.salary.max"
+                control={control}
+                render={({ field }) => (
+                  <EditableInput
+                    {...field}
+                    label={'Max'}
+                    type="number"
+                    value={getValues('jobInfo.salary.max') ?? 0}
+                    onChange={(e) => field.onChange(Number(e.target.value))}
+                    error={errors.jobInfo?.salary?.max?.message}
+                    ref={field.ref}
+                  />
+                )}
+              />
+            </div>
+          </div>
           <Controller
-            name="jobInfo.salary.min"
+            name="companyInfo.logo"
             control={control}
             render={({ field }) => (
-              <EditableInput
+              <FileUpload
                 {...field}
-                label={'Salary Range'}
-                type="number"
-                value={getValues('jobInfo.salary.min') ?? 0}
-                onChange={(e) => field.onChange(Number(e.target.value))}
-                error={errors.jobInfo?.salary?.min?.message}
-                ref={field.ref}
-              />
-            )}
-          />
-          <Controller
-            name="jobInfo.salary.max"
-            control={control}
-            render={({ field }) => (
-              <EditableInput
-                {...field}
-                label={''}
-                type="number"
-                value={getValues('jobInfo.salary.max') ?? 0}
-                onChange={(e) => field.onChange(Number(e.target.value))}
-                error={errors.jobInfo?.salary?.max?.message}
-                ref={field.ref}
-              />
+                label={'Upload a logo'}
+                value={getValues('companyInfo.logo') ?? ''}
+                onChange={field.onChange}
+                error={errors.companyInfo?.logo?.message} />
             )}
           />
           <Controller
@@ -273,7 +298,7 @@ export default function Page() {
           />
           <input type="submit" value="Post Job" />
         </form>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }

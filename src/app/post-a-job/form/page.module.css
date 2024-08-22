@@ -14,3 +14,28 @@
   gap: 1rem;
   padding: 1rem;
 }
+
+.form {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+
+}
+
+.subfields {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.labelText {
+  font-weight: 500;
+}

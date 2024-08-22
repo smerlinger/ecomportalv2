@@ -1,11 +1,12 @@
+import { Student } from '@phosphor-icons/react';
 import { forwardRef, SelectHTMLAttributes } from 'react';
-import * as S from '@radix-ui/react-select';
-import { CheckIcon } from '@radix-ui/react-icons';
+import styles from './Select.module.css';
+import { ErrorText } from '@/components/atoms/ErrorText';
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   error?: string | undefined;
-  options: { value: string; label: string }[];
+  options: { value: string; label: string; disabled?: boolean }[];
   value?: string;
   onChange: React.ChangeEventHandler<HTMLSelectElement>;
 }
@@ -13,11 +14,11 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ label, error, value, onChange, options, ...props }, ref) => {
     return (
-      <div>
-        {label && <label>{label}</label>}
-        <select ref={ref} value={value} onChange={onChange} {...props}>
+      <div className={styles.container}>
+        {label && <label className={styles.labelText}>{label}</label>}
+        <select className={styles.select} ref={ref} value={value} onChange={onChange} {...props}>
           {options.map((option) => (
-            <option key={option.value} value={option.value}>
+            <option key={option.value} value={option.value} disabled={option.disabled}>
               {option.label}
             </option>
           ))}
@@ -32,30 +33,30 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             ))}
           </S.Content>
         </S.Root> */}
-        {error && <span>{error}</span>}
+        {error && <ErrorText>{error}</ErrorText>}
       </div>
     );
   }
 );
 
-interface SelectItemProps {
-  children: string;
-  value: string;
-}
-const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(
-  ({ children, value, ...props }, ref) => {
-    return (
-      <S.Item
-        // className={classnames('SItem', className)}
-        {...props}
-        value={value}
-        ref={ref}
-      >
-        <S.ItemText>{children}</S.ItemText>
-        <S.ItemIndicator className="SelectItemIndicator">
-          <CheckIcon />
-        </S.ItemIndicator>
-      </S.Item>
-    );
-  }
-);
+// interface SelectItemProps {
+//   children: string;
+//   value: string;
+// }
+// const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(
+//   ({ children, value, ...props }, ref) => {
+//     return (
+//       <S.Item
+//         // className={classnames('SItem', className)}
+//         {...props}
+//         value={value}
+//         ref={ref}
+//       >
+//         <S.ItemText>{children}</S.ItemText>
+//         <S.ItemIndicator className="SelectItemIndicator">
+//           <CheckIcon />
+//         </S.ItemIndicator>
+//       </S.Item>
+//     );
+//   }
+// );
