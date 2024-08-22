@@ -23,40 +23,8 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             </option>
           ))}
         </select>
-        {/* <S.Root onValueChange={onChange}>
-          <S.Trigger>
-            {options.find((option) => option.value === value)?.label}
-          </S.Trigger>
-          <S.Content>
-            {options.map((option) => (
-              <SelectItem value={option.value}>{option.label}</SelectItem>
-            ))}
-          </S.Content>
-        </S.Root> */}
         {error && <ErrorText>{error}</ErrorText>}
       </div>
     );
   }
 );
-
-// interface SelectItemProps {
-//   children: string;
-//   value: string;
-// }
-// const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(
-//   ({ children, value, ...props }, ref) => {
-//     return (
-//       <S.Item
-//         // className={classnames('SItem', className)}
-//         {...props}
-//         value={value}
-//         ref={ref}
-//       >
-//         <S.ItemText>{children}</S.ItemText>
-//         <S.ItemIndicator className="SelectItemIndicator">
-//           <CheckIcon />
-//         </S.ItemIndicator>
-//       </S.Item>
-//     );
-//   }
-// );

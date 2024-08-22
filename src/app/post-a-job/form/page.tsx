@@ -30,12 +30,10 @@ export default function Page() {
     handleSubmit,
     control,
     getValues,
-    setValue,
     formState: { errors },
   } = useForm<PostAJobForm>({
     resolver: zodResolver(PostAJobFormSchema),
   });
-  // const { register, handleSubmit, control, getValues } = useForm();
   const onSubmit = (data: any) => console.log(data);
 
   return (
@@ -66,7 +64,6 @@ export default function Page() {
               <EditableInput
                 {...field}
                 label={'Company Name'}
-                // value={field.value}
                 value={getValues('companyInfo.name') ?? ''}
                 onChange={field.onChange}
                 error={errors.companyInfo?.name?.message}
@@ -81,7 +78,6 @@ export default function Page() {
               <EditableInput
                 {...field}
                 label={'Company Website URL'}
-                // value={field.value}
                 value={getValues('companyInfo.url') ?? ''}
                 onChange={field.onChange}
                 error={errors.companyInfo?.url?.message}
@@ -146,7 +142,6 @@ export default function Page() {
                   <EditableInput
                     {...field}
                     label={'State'}
-                    // value={field.value}
                     value={getValues('jobInfo.location.state') ?? ''}
                     onChange={field.onChange}
                     error={errors.jobInfo?.location?.state?.message}
@@ -161,7 +156,6 @@ export default function Page() {
                   <EditableInput
                     {...field}
                     label={'Country'}
-                    // value={field.value}
                     value={getValues('jobInfo.location.country') ?? ''}
                     onChange={field.onChange}
                     error={errors.jobInfo?.location?.country?.message}
