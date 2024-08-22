@@ -15,5 +15,8 @@ export default function Page(/*{ amount }: PageProps*/) {
     const [clientSecret, setClientSecret] = useState('');
     const [loading, setLoading] = useState(false);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 18f744f (stripe integration WIP)
 }
