@@ -9,7 +9,7 @@ import TextArea from '@/components/molecules/TextArea';
 import styles from './page.module.css';
 import { Banner } from '@/components/atoms/Banner';
 import { Header } from '@/components/organisms/Header';
-import FileUpload from '@/components/FIleUpload';
+import FileUpload from '@/components/FileUpload';
 
 type PostAJobForm = z.infer<typeof PostAJobFormSchema>;
 const jobCategories = [
@@ -30,6 +30,7 @@ export default function Page() {
     handleSubmit,
     control,
     getValues,
+    setValue,
     formState: { errors },
   } = useForm<PostAJobForm>({
     resolver: zodResolver(PostAJobFormSchema),
@@ -262,10 +263,13 @@ export default function Page() {
             render={({ field }) => (
               <FileUpload
                 {...field}
+                name={'companyInfo.logo'}
                 label={'Upload a logo'}
-                value={getValues('companyInfo.logo') ?? ''}
-                onChange={field.onChange}
-                error={errors.companyInfo?.logo?.message} />
+                onChange={
+                  field.onChange
+                }
+                error={errors.companyInfo?.logo?.message}
+                ref={field.ref} />
             )}
           />
           <Controller

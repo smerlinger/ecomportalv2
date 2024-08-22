@@ -1,5 +1,5 @@
 import { z } from 'zod';
-const MAX_FILE_SIZE = 100_000;
+const MAX_FILE_SIZE = 100_000_000;
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
 
 export const PostAJobFormSchema = z.object({
@@ -7,11 +7,11 @@ export const PostAJobFormSchema = z.object({
     email: z.string().email({ message: 'Invalid email' }),
     name: z.string().min(1, { message: 'Company name is required' }),
     url: z.string(),
-    logo: z.any().optional()//.refine((file) => file?.size <= MAX_FILE_SIZE, `Max image size is 100KB.`)
-    // .refine(
-    //   (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
-    //   "Only .jpg, .jpeg, .png and .webp formats are supported."
-    // ),
+    logo: (z.custom<File>()).optional()//.refine((file) => !file || file.size <= MAX_FILE_SIZE, `Max image size is 100KB.`)
+      .refine(
+        (file) => !file || ACCEPTED_IMAGE_TYPES.includes(file?.type),
+        "Only .jpg, .jpeg, .png and .webp formats are supported."
+      ),
   }),
   jobInfo: z.object({
     title: z.string().min(1, { message: 'Job title is required' }),
