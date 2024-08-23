@@ -2,6 +2,7 @@ import { error } from "next/dist/build/output/log"
 import { NextRequest, NextResponse } from "next/server"
 import { getLogger } from "@/app/lib/logger"
 import Stripe from "stripe";
+import connectDB from "@/service/database";
 
 if (!process.env.STRIPE_WEBHOOK_SECRET) {
     throw new Error("STRIPE_WEBHOOK_SECRET is not defined");
@@ -15,7 +16,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 export const POST = async (req: NextRequest, res: NextResponse) => {
     const logger = getLogger()
     const body = await req.text()
-    const sig = req.headers.get("stripe-signature")
+    const sig = req.headers.get("stripe-signature") as string;
 
     let event: Stripe.Event
 
@@ -36,15 +37,22 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
         // Handle the event
         switch (event.type) {
             case "checkout.session.completed":
-                const session = event.data.object as Stripe.Checkout.Session
+                const completedSession = event.data.object as Stripe.Checkout.Session
+
+                logger.info({ completedSession }, `[Stripe] Checkout Session Completed! Session ID: ${completedSession.id}`)
 
                 // add to database
+                await connectDB();
+
+
+                // fulfill order
+                fulfillCheckout(completedSession.id);
                 break
             case "checkout.session.async_payment_failed":
-                const session2 = event.data.object as Stripe.Checkout.Session
+                const failedSession = event.data.object as Stripe.Checkout.Session
 
                 // don't do anything but return an error to customer
-                console.log({ session2, event })
+                console.log({ failedSession, event })
 
                 break
             default:

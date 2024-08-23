@@ -8,7 +8,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 
 export async function POST(request: NextRequest) {
     try {
-        const { amount } = await request.json();
+        const { cart } = await request.json();
 
         const session = await stripe.checkout.sessions.create({
             mode: "payment",

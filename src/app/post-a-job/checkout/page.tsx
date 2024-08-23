@@ -15,4 +15,5 @@ export default function Page(/*{ amount }: PageProps*/) {
     const [clientSecret, setClientSecret] = useState('');
     const [loading, setLoading] = useState(false);
 
+
 }
