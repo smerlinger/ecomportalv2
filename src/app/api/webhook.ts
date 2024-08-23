@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { getLogger } from "@/app/lib/logger"
 import Stripe from "stripe";
 import connectDB from "@/service/database";
+import Order from "@/app/models/order.model";
 
 if (!process.env.STRIPE_WEBHOOK_SECRET) {
     throw new Error("STRIPE_WEBHOOK_SECRET is not defined");
@@ -43,10 +44,18 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
 
                 // add to database
                 await connectDB();
+                const order = new Order({
+                    sessionId: completedSession.id,
+                    paymentStatus: completedSession.payment_status,
+                    amountTotal: completedSession.amount_total,
+                    currency: completedSession.currency,
+                    customerEmail: completedSession.customer_details?.email,
+                });
 
+                await order.save();
 
                 // fulfill order
-                fulfillCheckout(completedSession.id);
+                await fulfillCheckout(completedSession.id);
                 break
             case "checkout.session.async_payment_failed":
                 const failedSession = event.data.object as Stripe.Checkout.Session

@@ -22,7 +22,11 @@ export default function Page() {
   } = useForm<PostAJobForm>({
     resolver: zodResolver(PostAJobFormSchema),
   });
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: any) => {
+    console.log(data);
+    // send data to backend
+
+  };
 
   return (
     <div className={styles.wrapper}>
