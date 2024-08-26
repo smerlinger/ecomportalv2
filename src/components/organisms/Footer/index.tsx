@@ -47,7 +47,7 @@ export const Footer = () => {
         <div className={styles.listTitle}>Search Jobs</div>
         {FooterCityList.map((item, index) => (
           <React.Fragment key={`footer-city-${index}`}>
-            <Link href={`/jobs/${item.url}`}>
+            <Link href={`/cities/${item.url}`}>
               <div className={styles.listItem}>{`${item.name} Jobs`}</div>
             </Link>
           </React.Fragment>

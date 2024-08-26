@@ -120,130 +120,130 @@ export const FooterJobList = [
 export const FooterCityList = [
   {
     name: 'London',
-    url: '',
+    url: '/london',
   },
   {
-    name: 'LA',
-    url: '',
+    name: 'Los Angeles',
+    url: '/los-angeles',
   },
   {
     name: 'New York',
-    url: '',
+    url: '/new-york',
   },
   {
     name: 'Melbourne',
-    url: '',
+    url: '/melbourne',
   },
   {
     name: 'Denver',
-    url: '',
+    url: '/denver',
   },
   {
     name: 'Miami',
-    url: '',
+    url: '/miami',
   },
   {
     name: 'Beaverton',
-    url: '',
+    url: '/beaverton',
   },
   {
     name: 'Manchester',
-    url: '',
+    url: '/manchester',
   },
   {
     name: 'Austin',
-    url: '',
+    url: '/austin',
   },
   {
-    name: 'Irine',
-    url: '',
+    name: 'Irvine',
+    url: '/irvine',
   },
   {
     name: 'El Segundo',
-    url: '',
+    url: '/el-segundo',
   },
   {
     name: 'Chicago',
-    url: '',
+    url: '/chicago',
   },
   {
     name: 'Santa Monica',
-    url: '',
+    url: '/santa-monica',
   },
   {
     name: 'Atlanta',
-    url: '',
+    url: '/atlanta',
   },
   {
     name: 'Culver City',
-    url: '',
+    url: '/culver-city',
   },
   {
     name: 'Seattle',
-    url: '',
+    url: '/seattle',
   },
   {
     name: 'Boston',
-    url: '',
+    url: '/boston',
   },
   {
     name: 'San Francisco',
-    url: '',
+    url: '/san-francisco',
   },
   {
     name: 'Salt Lake City',
-    url: '',
+    url: '/salt-lake-city',
   },
   {
     name: 'San Diego',
-    url: '',
+    url: '/san-diego',
   },
   {
     name: 'Dallas',
-    url: '',
+    url: '/dallas',
   },
   {
     name: 'Anaheim',
-    url: '',
+    url: '/anaheim',
   },
   {
     name: 'Gold Coast',
-    url: '',
+    url: '/gold-coast',
   },
   {
     name: 'Portland',
-    url: '',
+    url: '/portland',
   },
   {
     name: 'Brisbane',
-    url: '',
+    url: '/brisbane',
   },
   {
     name: 'Brooklyn',
-    url: '',
+    url: '/brooklyn',
   },
   {
     name: 'Solihull',
-    url: '',
+    url: '/solihull',
   },
   {
     name: 'Detroit',
-    url: '',
+    url: '/detroit',
   },
   {
     name: 'Nashville',
-    url: '',
+    url: '/nashville',
   },
   {
     name: 'Santa Clarita',
-    url: '',
+    url: '/santa-clarita',
   },
   {
     name: 'Adelaide',
-    url: '',
+    url: '/adelaide',
   },
   {
     name: 'Bath',
-    url: '',
+    url: '/bath',
   },
 ];
