@@ -1,119 +1,119 @@
 export const FooterJobList = [
   {
     name: 'Social Media Coordinator',
-    url: '',
+    url: '/social-media-coordinator',
   },
   {
     name: 'Content Creation',
-    url: '',
+    url: '/content-creation',
   },
   {
     name: 'Front-end Developer',
-    url: '',
+    url: '/front-end-developer',
   },
   {
     name: 'Paid Media',
-    url: '',
+    url: '/paid-media',
   },
   {
     name: 'Influencer Manager',
-    url: '',
+    url: '/influencer-manager',
   },
   {
     name: 'Freelance',
-    url: '',
+    url: '/freelance',
   },
   {
     name: 'Email Marketing',
-    url: '',
+    url: '/email-marketing',
   },
   {
     name: 'Software Engineer',
-    url: '',
+    url: '/software-engineer',
   },
   {
     name: 'Graphic Designer',
-    url: '',
+    url: '/graphic-designer',
   },
   {
     name: 'Graphic Designer',
-    url: '',
+    url: '/graphic-designer',
   },
   {
     name: 'CRM',
-    url: '',
+    url: '/crm',
   },
   {
     name: 'Digital Marketing',
-    url: '',
+    url: '/digital-marketing',
   },
   {
     name: 'Full-Stack Developer',
-    url: '',
+    url: '/full-stack-developer',
   },
   {
     name: 'Financial Analyst',
-    url: '',
+    url: '/financial-analyst',
   },
   {
     name: 'Accountant',
-    url: '',
+    url: '/accountant',
   },
   {
     name: 'eCommerce Coordinator',
-    url: '',
+    url: '/ecommerce-coordinator',
   },
   {
     name: 'Facebook Ads',
-    url: '',
+    url: '/facebook-ads',
   },
   {
     name: 'Google Ads',
-    url: '',
+    url: '/google-ads',
   },
   {
     name: 'Social Media Manager',
-    url: '',
+    url: '/social-media-manager',
   },
   {
     name: 'Account Manager',
-    url: '',
+    url: '/account-manager',
   },
   {
     name: 'Growth Marketing',
-    url: '',
+    url: '/growth-marketing',
   },
   {
     name: 'Product Development',
-    url: '',
+    url: '/product-development',
   },
   {
     name: 'Customer Service',
-    url: '',
+    url: '/customer-service',
   },
   {
     name: 'SEO',
-    url: '',
+    url: '/seo',
   },
   {
     name: 'SMS Marketing',
-    url: '',
+    url: '/sms-marketing',
   },
   {
     name: 'Lifecycle Marketing',
-    url: '',
+    url: '/lifecycle-marketing',
   },
   {
     name: 'Sales Development',
-    url: '',
+    url: '/sales-development',
   },
   {
     name: 'Entry Level',
-    url: '',
+    url: '/entry-level',
   },
   {
     name: 'Junior',
-    url: '',
+    url: '/junior',
   },
 ];
 

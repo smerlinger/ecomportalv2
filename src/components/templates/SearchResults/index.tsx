@@ -10,9 +10,10 @@ import styles from './searchResults.module.css';
 
 interface SearchResultsProps {
   useFilter: boolean;
+  initialQuery?: string;
 }
 
-export const SearchResults = ({ useFilter }: SearchResultsProps) => {
+export const SearchResults = ({ useFilter, initialQuery }: SearchResultsProps) => {
   const [clearFilter, setClearFilter] = useState(false);
   const searchClient = algoliasearch(
     process.env.ALGOLIA_APP_ID!,
@@ -21,7 +22,14 @@ export const SearchResults = ({ useFilter }: SearchResultsProps) => {
 
   return (
     <div className={styles.container}>
-      <InstantSearchNext searchClient={searchClient} indexName="ecomjobs_index">
+      <InstantSearchNext
+        searchClient={searchClient}
+        indexName="ecomjobs_index"
+        initialUiState={{
+          ecomjobs_index: {
+            query: initialQuery ?? '',
+          },
+        }}>
         <Configure hitsPerPage={12} />
         <SearchField
           clearFilter={clearFilter}
