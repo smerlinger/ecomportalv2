@@ -6,7 +6,7 @@ import {
   getEmployeeRange,
   getLocation,
   getSalaryDisplay,
-} from '@/utils/job';
+} from '@/lib/utils/job';
 
 interface JobDetailsHeaderProps {
   jobDetails: JobDetail;

@@ -11,7 +11,7 @@ import {
   getEmployeeRange,
   getLocation,
   getSalaryDisplay,
-} from '@/utils/job';
+} from '@/lib/utils/job';
 
 interface JobItemProps {
   hit: AlgoliaHit;
@@ -39,9 +39,9 @@ export const JobItem = ({ hit }: JobItemProps) => {
               </div>
             )}
             {Number(hit.salaryMin) !== null &&
-            Number(hit.salaryMin) !== 0 &&
-            Number(hit.salaryMax) !== null &&
-            Number(hit.salaryMax) !== 0 ? (
+              Number(hit.salaryMin) !== 0 &&
+              Number(hit.salaryMax) !== null &&
+              Number(hit.salaryMax) !== 0 ? (
               <div className={styles.detail}>
                 <Money />
                 {getSalaryDisplay({

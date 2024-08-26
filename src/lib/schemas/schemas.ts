@@ -2,7 +2,7 @@ import { z } from 'zod';
 const MAX_FILE_SIZE = 100_000_000;
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
 
-const CompanyInfoSchema = z.object({
+const companyInfoSchema = z.object({
   email: z.string().email({ message: 'Invalid email' }),
   name: z.string().min(1, { message: 'Company name is required' }),
   url: z.string(),
@@ -21,7 +21,7 @@ const LocationSchema = z.object({
 
 const SalaryRangeSchema = z.object({ min: z.number().optional(), max: z.number().optional() })
 
-const JobInfoSchema = z.object({
+const jobInfoSchema = z.object({
   title: z.string().min(1, { message: 'Job title is required' }),
   category: z.string().min(1, { message: 'Job category is required' }),
   location: LocationSchema,
@@ -35,7 +35,26 @@ const JobInfoSchema = z.object({
   requirements: z.string().optional(),
 })
 
-export const PostAJobFormSchema = z.object({
-  companyInfo: CompanyInfoSchema,
-  jobInfo: JobInfoSchema,
+// const addOnsSchema = z.object({
+//   highlight: z.boolean().optional(),
+//   top24: z.boolean().optional(),
+//   week: z.boolean().optional(),
+//   month: z.boolean().optional(),
+//   emailBlast1: z.boolean().optional(),
+//   emailBlast2: z.boolean().optional(),
+// })
+const AddOnOptions = z.enum([
+  'highlight',
+  'top24',
+  'week',
+  'month',
+  'emailBlast1',
+  'emailBlast2',
+]);
+const addOnsSchema = z.array(AddOnOptions);
+
+export const postAJobFormSchema = z.object({
+  companyInfo: companyInfoSchema,
+  jobInfo: jobInfoSchema,
+  addOns: addOnsSchema,
 });

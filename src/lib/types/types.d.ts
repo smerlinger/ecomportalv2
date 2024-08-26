@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { PostAJobFormSchema } from '@/schemas/schemas';
+import { postAJobFormSchema } from '@/lib/schemas/schemas';
 
 // Months are zero indexed, so January is month 0.
 export type Month = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
@@ -76,4 +76,4 @@ export type JobDetail = {
   weekTimestamp: string | null;
   monthTimestamp: string | null;
 };
-export type PostAJobForm = z.infer<typeof PostAJobFormSchema>;
+export type PostAJobForm = z.infer<typeof postAJobFormSchema>;
