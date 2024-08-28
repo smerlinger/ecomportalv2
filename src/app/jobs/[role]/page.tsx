@@ -8,16 +8,20 @@ import styles from './page.module.css';
 import { FilteredIntro } from '@/components/organisms/FilteredIntro';
 
 export default function Page() {
-    const { role } = useParams();
-    const query = role.toString().replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase());
-    console.log(query);
-    return (<div className={styles.wrapper}>
-        <Banner />
-        <div className={styles.container}>
-            <Header />
-            <FilteredIntro query={query as string} />
-            <SearchResults useFilter={true} initialQuery={query} />
-        </div>
-        <Footer />
-    </div>)
+  const { role } = useParams();
+  const query = role
+    .toString()
+    .replace(/-/g, ' ')
+    .replace(/(^\w|\s\w)/g, (m) => m.toUpperCase());
+  return (
+    <div className={styles.wrapper}>
+      <Banner />
+      <div className={styles.container}>
+        <Header />
+        <FilteredIntro query={query as string} />
+        <SearchResults useFilter={true} initialQuery={query} />
+      </div>
+      <Footer />
+    </div>
+  );
 }

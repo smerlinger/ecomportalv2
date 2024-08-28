@@ -13,11 +13,14 @@ interface SearchResultsProps {
   initialQuery?: string;
 }
 
-export const SearchResults = ({ useFilter, initialQuery }: SearchResultsProps) => {
+export const SearchResults = ({
+  useFilter,
+  initialQuery,
+}: SearchResultsProps) => {
   const [clearFilter, setClearFilter] = useState(false);
   const searchClient = algoliasearch(
-    process.env.ALGOLIA_APP_ID!,
-    process.env.ALGOLIA_API_KEY!
+    process.env.ALGOLIA_APP_ID ?? '',
+    process.env.ALGOLIA_API_KEY ?? ''
   );
 
   return (
@@ -29,7 +32,8 @@ export const SearchResults = ({ useFilter, initialQuery }: SearchResultsProps) =
           ecomjobs_index: {
             query: initialQuery ?? '',
           },
-        }}>
+        }}
+      >
         <Configure hitsPerPage={12} />
         <SearchField
           clearFilter={clearFilter}
