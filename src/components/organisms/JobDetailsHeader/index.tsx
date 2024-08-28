@@ -1,5 +1,5 @@
 import styles from './jobDetailsHeader.module.css';
-import { JobDetail } from 'types';
+import { JobDetail } from '@/types/types';
 import { MapPin, Money, Users } from '@phosphor-icons/react';
 import {
   getDateText,
@@ -26,9 +26,9 @@ export const JobDetailsHeader = ({ jobDetails }: JobDetailsHeaderProps) => {
             </div>
           )}
         {Number(jobDetails.salaryMin) !== null &&
-        Number(jobDetails.salaryMin) !== 0 &&
-        Number(jobDetails.salaryMax) !== null &&
-        Number(jobDetails.salaryMax) !== 0 ? (
+          Number(jobDetails.salaryMin) !== 0 &&
+          Number(jobDetails.salaryMax) !== null &&
+          Number(jobDetails.salaryMax) !== 0 ? (
           <div className={styles.detail}>
             <Money />
             {getSalaryDisplay({

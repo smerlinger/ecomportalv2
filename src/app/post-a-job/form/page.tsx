@@ -2,7 +2,6 @@
 import { PostAJobFormSchema } from '@/schemas/schemas';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { EditableInput } from '@/components/molecules/EditableTextInput';
 import { Select } from '@/components/molecules/Select';
 import TextArea from '@/components/molecules/TextArea';
@@ -10,21 +9,10 @@ import styles from './page.module.css';
 import { Banner } from '@/components/atoms/Banner';
 import { Header } from '@/components/organisms/Header';
 import FileUpload from '@/components/FileUpload';
+import { PostAJobForm } from '@/types/types';
+import { jobCategories } from '@/constants/JobCategoriesList';
+import { jobTypes } from '@/constants/JobTypesList';
 
-type PostAJobForm = z.infer<typeof PostAJobFormSchema>;
-const jobCategories = [
-  'Marketing',
-  'Biz Ops',
-  'Creative',
-  'Customer Service',
-  'Web Dev',
-  'Product',
-  'Finance',
-  'People & HR',
-  'Sales',
-  'Logistics',
-];
-const jobTypes = ['Remote', 'Onsite', 'Hybrid'];
 export default function Page() {
   const {
     handleSubmit,
@@ -106,11 +94,13 @@ export default function Page() {
               <Select
                 {...field}
                 label={'Job Category'}
-                options={[{ value: '', label: 'Select a category', disabled: true },
-                ...jobCategories.map((category) => ({
-                  value: category,
-                  label: category,
-                }))]}
+                options={[
+                  { value: '', label: 'Select a category', disabled: true },
+                  ...jobCategories.map((category) => ({
+                    value: category,
+                    label: category,
+                  })),
+                ]}
                 value={getValues('jobInfo.category') ?? ''}
                 onChange={field.onChange}
                 error={errors.jobInfo?.category?.message}
@@ -120,7 +110,7 @@ export default function Page() {
           />
           <div className={styles.group}>
             <label className={styles.labelText}>Location</label>
-            <div className={styles.subfields} >
+            <div className={styles.subfields}>
               <Controller
                 name="jobInfo.location.city"
                 control={control}
@@ -201,7 +191,8 @@ export default function Page() {
                   ref={field.ref}
                 />
               )}
-            /></div>
+            />
+          </div>
           <Controller
             name="jobInfo.applicationUrl"
             control={control}
@@ -218,7 +209,7 @@ export default function Page() {
           />
           <div className={styles.group}>
             <label className={styles.labelText}>Salary Range</label>
-            <div className={styles.subfields} >
+            <div className={styles.subfields}>
               <Controller
                 name="jobInfo.salary.min"
                 control={control}
@@ -259,11 +250,10 @@ export default function Page() {
                 {...field}
                 name={'companyInfo.logo'}
                 label={'Upload a logo'}
-                onChange={
-                  field.onChange
-                }
+                onChange={field.onChange}
                 error={errors.companyInfo?.logo?.message}
-                ref={field.ref} />
+                ref={field.ref}
+              />
             )}
           />
           <Controller
@@ -296,7 +286,7 @@ export default function Page() {
           />
           <input type="submit" value="Post Job" />
         </form>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 }
