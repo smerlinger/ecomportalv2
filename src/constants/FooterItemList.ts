@@ -1,249 +1,249 @@
 export const FooterJobList = [
   {
     name: 'Social Media Coordinator',
-    url: '/social-media-coordinator',
+    url: 'social-media-coordinator',
   },
   {
     name: 'Content Creation',
-    url: '/content-creation',
+    url: 'content-creation',
   },
   {
     name: 'Front-end Developer',
-    url: '/front-end-developer',
+    url: 'front-end-developer',
   },
   {
     name: 'Paid Media',
-    url: '/paid-media',
+    url: 'paid-media',
   },
   {
     name: 'Influencer Manager',
-    url: '/influencer-manager',
+    url: 'influencer-manager',
   },
   {
     name: 'Freelance',
-    url: '/freelance',
+    url: 'freelance',
   },
   {
     name: 'Email Marketing',
-    url: '/email-marketing',
+    url: 'email-marketing',
   },
   {
     name: 'Software Engineer',
-    url: '/software-engineer',
+    url: 'software-engineer',
   },
   {
     name: 'Graphic Designer',
-    url: '/graphic-designer',
+    url: 'graphic-designer',
   },
   {
     name: 'Graphic Designer',
-    url: '/graphic-designer',
+    url: 'graphic-designer',
   },
   {
     name: 'CRM',
-    url: '/crm',
+    url: 'crm',
   },
   {
     name: 'Digital Marketing',
-    url: '/digital-marketing',
+    url: 'digital-marketing',
   },
   {
     name: 'Full-Stack Developer',
-    url: '/full-stack-developer',
+    url: 'full-stack-developer',
   },
   {
     name: 'Financial Analyst',
-    url: '/financial-analyst',
+    url: 'financial-analyst',
   },
   {
     name: 'Accountant',
-    url: '/accountant',
+    url: 'accountant',
   },
   {
     name: 'eCommerce Coordinator',
-    url: '/ecommerce-coordinator',
+    url: 'ecommerce-coordinator',
   },
   {
     name: 'Facebook Ads',
-    url: '/facebook-ads',
+    url: 'facebook-ads',
   },
   {
     name: 'Google Ads',
-    url: '/google-ads',
+    url: 'google-ads',
   },
   {
     name: 'Social Media Manager',
-    url: '/social-media-manager',
+    url: 'social-media-manager',
   },
   {
     name: 'Account Manager',
-    url: '/account-manager',
+    url: 'account-manager',
   },
   {
     name: 'Growth Marketing',
-    url: '/growth-marketing',
+    url: 'growth-marketing',
   },
   {
     name: 'Product Development',
-    url: '/product-development',
+    url: 'product-development',
   },
   {
     name: 'Customer Service',
-    url: '/customer-service',
+    url: 'customer-service',
   },
   {
     name: 'SEO',
-    url: '/seo',
+    url: 'seo',
   },
   {
     name: 'SMS Marketing',
-    url: '/sms-marketing',
+    url: 'sms-marketing',
   },
   {
     name: 'Lifecycle Marketing',
-    url: '/lifecycle-marketing',
+    url: 'lifecycle-marketing',
   },
   {
     name: 'Sales Development',
-    url: '/sales-development',
+    url: 'sales-development',
   },
   {
     name: 'Entry Level',
-    url: '/entry-level',
+    url: 'entry-level',
   },
   {
     name: 'Junior',
-    url: '/junior',
+    url: 'junior',
   },
 ];
 
 export const FooterCityList = [
   {
     name: 'London',
-    url: '/london',
+    url: 'london',
   },
   {
     name: 'Los Angeles',
-    url: '/los-angeles',
+    url: 'los-angeles',
   },
   {
     name: 'New York',
-    url: '/new-york',
+    url: 'new-york',
   },
   {
     name: 'Melbourne',
-    url: '/melbourne',
+    url: 'melbourne',
   },
   {
     name: 'Denver',
-    url: '/denver',
+    url: 'denver',
   },
   {
     name: 'Miami',
-    url: '/miami',
+    url: 'miami',
   },
   {
     name: 'Beaverton',
-    url: '/beaverton',
+    url: 'beaverton',
   },
   {
     name: 'Manchester',
-    url: '/manchester',
+    url: 'manchester',
   },
   {
     name: 'Austin',
-    url: '/austin',
+    url: 'austin',
   },
   {
     name: 'Irvine',
-    url: '/irvine',
+    url: 'irvine',
   },
   {
     name: 'El Segundo',
-    url: '/el-segundo',
+    url: 'el-segundo',
   },
   {
     name: 'Chicago',
-    url: '/chicago',
+    url: 'chicago',
   },
   {
     name: 'Santa Monica',
-    url: '/santa-monica',
+    url: 'santa-monica',
   },
   {
     name: 'Atlanta',
-    url: '/atlanta',
+    url: 'atlanta',
   },
   {
     name: 'Culver City',
-    url: '/culver-city',
+    url: 'culver-city',
   },
   {
     name: 'Seattle',
-    url: '/seattle',
+    url: 'seattle',
   },
   {
     name: 'Boston',
-    url: '/boston',
+    url: 'boston',
   },
   {
     name: 'San Francisco',
-    url: '/san-francisco',
+    url: 'san-francisco',
   },
   {
     name: 'Salt Lake City',
-    url: '/salt-lake-city',
+    url: 'salt-lake-city',
   },
   {
     name: 'San Diego',
-    url: '/san-diego',
+    url: 'san-diego',
   },
   {
     name: 'Dallas',
-    url: '/dallas',
+    url: 'dallas',
   },
   {
     name: 'Anaheim',
-    url: '/anaheim',
+    url: 'anaheim',
   },
   {
     name: 'Gold Coast',
-    url: '/gold-coast',
+    url: 'gold-coast',
   },
   {
     name: 'Portland',
-    url: '/portland',
+    url: 'portland',
   },
   {
     name: 'Brisbane',
-    url: '/brisbane',
+    url: 'brisbane',
   },
   {
     name: 'Brooklyn',
-    url: '/brooklyn',
+    url: 'brooklyn',
   },
   {
     name: 'Solihull',
-    url: '/solihull',
+    url: 'solihull',
   },
   {
     name: 'Detroit',
-    url: '/detroit',
+    url: 'detroit',
   },
   {
     name: 'Nashville',
-    url: '/nashville',
+    url: 'nashville',
   },
   {
     name: 'Santa Clarita',
-    url: '/santa-clarita',
+    url: 'santa-clarita',
   },
   {
     name: 'Adelaide',
-    url: '/adelaide',
+    url: 'adelaide',
   },
   {
     name: 'Bath',
-    url: '/bath',
+    url: 'bath',
   },
 ];
