@@ -1,6 +1,6 @@
 'use client';
 
-import { HeaderDropdownItems } from '@/constants/HeaderDropdownItems';
+import { HeaderDropdownItems } from '@/lib/constants/HeaderDropdownItems';
 import { CaretDown } from '@phosphor-icons/react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { IconButton } from '@radix-ui/themes';

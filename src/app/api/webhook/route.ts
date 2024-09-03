@@ -1,35 +1,36 @@
 import { error } from 'next/dist/build/output/log';
 import { NextRequest, NextResponse } from 'next/server';
-import { getLogger } from '@/app/lib/logger';
+// import { getLogger } from '@/app/lib/logger';
 import Stripe from 'stripe';
 import connectDB from '@/service/database';
-import Order from '@/app/models/order.model';
+import Order from '@/lib/models/order.model';
+import JobPost from '@/lib/models/jobPost.model';
 
-if (!process.env.STRIPE_WEBHOOK_SECRET) {
-  throw new Error('STRIPE_WEBHOOK_SECRET is not defined');
-}
+// if (!process.env.STRIPE_WEBHOOK_SECRET) {
+//   throw new Error('STRIPE_WEBHOOK_SECRET is not defined');
+// }
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
   apiVersion: '2024-06-20',
 });
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
-  const logger = getLogger();
+  // const logger = getLogger();
   const body = await req.text();
   const sig = req.headers.get('stripe-signature') as string;
 
   let event: Stripe.Event;
 
-  logger.info('[Stripe] Processing webhook');
+  console.info('[Stripe] Processing webhook');
 
   try {
     event = stripe.webhooks.constructEvent(
       body,
       sig as string,
-      process.env.STRIPE_WEBHOOK_SECRET!
+      process.env.STRIPE_WEBHOOK_SECRET ?? ''
     );
 
-    logger.info({ type: event.type }, `[Stripe] Listening to Webhook Event!`);
+    console.info({ type: event.type }, `[Stripe] Listening to Webhook Event!`);
   } catch (err) {
     error(err as string);
     return new Response(`Webhook Error: ${(err as Error).message}`, {
@@ -43,7 +44,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
       case 'checkout.session.completed':
         const completedSession = event.data.object as Stripe.Checkout.Session;
 
-        logger.info(
+        console.info(
           { completedSession },
           `[Stripe] Checkout Session Completed! Session ID: ${completedSession.id}`
         );
@@ -60,8 +61,15 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
 
         await order.save();
 
-        // fulfill order
-        await fulfillCheckout(completedSession.id);
+        const updatedJobPost = await JobPost.findOneAndUpdate(
+          { sessionId: completedSession.id },
+          { paymentStatus: 'paid' }
+        );
+        if (!updatedJobPost)
+          return NextResponse.json(
+            { error: 'Failed to update Job Post' },
+            { status: 500 }
+          );
         break;
       case 'checkout.session.async_payment_failed':
         const failedSession = event.data.object as Stripe.Checkout.Session;
@@ -72,17 +80,17 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
         break;
       default:
         // Unexpected event type
-        logger.warn(event.type, `🤷‍♀️ Unhandled event type`);
+        console.warn(event.type, `🤷‍♀️ Unhandled event type`);
         break;
     }
   } catch (err) {
-    logger.error({ err }, `[Stripe] Webhook Error`);
+    console.error({ err }, `[Stripe] Webhook Error`);
     return new Response('Webhook handler failed. View logs.', {
       status: 400,
     });
   }
 
-  logger.info(`[Stripe] Successfully ran Webhook!`);
+  console.info(`[Stripe] Successfully ran Webhook!`);
 
   return NextResponse.json({ success: true });
 };

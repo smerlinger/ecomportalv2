@@ -1,6 +1,6 @@
 'use client';
 
-import { SearchFieldWordList } from '@/constants/SearchFieldWordList';
+import { SearchFieldWordList } from '@/lib/constants/SearchFieldWordList';
 import { MagnifyingGlass } from '@phosphor-icons/react';
 import * as Form from '@radix-ui/react-form';
 import { SearchClient } from 'algoliasearch/lite';

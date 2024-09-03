@@ -1,6 +1,6 @@
 'use client';
 
-import { MobileMenuItems } from '@/constants/MobileMenuItems';
+import { MobileMenuItems } from '@/lib/constants/MobileMenuItems';
 import { returnIcon } from '@/lib/utils/icons';
 import { List, X } from '@phosphor-icons/react';
 import * as Dialog from '@radix-ui/react-dialog';

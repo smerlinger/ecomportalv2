@@ -10,10 +10,10 @@ import { Banner } from '@/components/atoms/Banner';
 import { Header } from '@/components/organisms/Header';
 import FileUpload from '@/components/FileUpload';
 import { PostAJobForm } from '@/lib/types/types';
-import { jobCategories } from '@/constants/JobCategoriesList';
-import { jobTypes } from '@/constants/JobTypesList';
+import { jobCategories } from '@/lib/constants/JobCategoriesList';
+import { jobTypes } from '@/lib/constants/JobTypesList';
 import CheckboxGroup from '@/components/Checkbox';
-import { addOnOptions } from '@/constants/AddOnOptionsList';
+import { addOnOptions } from '@/lib/constants/AddOnOptionsList';
 
 export default function Page() {
   const {
@@ -146,6 +146,10 @@ export default function Page() {
 
       reset();
     }
+
+    console.log(responseData);
+
+    window.location.assign(responseData.url as string);
   };
 
   return (

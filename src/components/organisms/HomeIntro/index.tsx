@@ -3,7 +3,7 @@ import {
   BrandBubbleProps,
 } from '@/components/molecules/BrandBubble';
 import { HomeIntroEmailForm } from '@/components/molecules/HomeIntroEmailForm';
-import { BrandBubbleList } from '@/constants/BrandBubbleList';
+import { BrandBubbleList } from '@/lib/constants/BrandBubbleList';
 import { Fragment } from 'react';
 import styles from './homeIntro.module.css';
 

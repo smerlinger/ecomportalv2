@@ -2,8 +2,10 @@ import { postAJobFormSchema } from '@/lib/schemas/schemas';
 import { redirect } from 'next/navigation';
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+import { PriceIds } from '@/lib/constants/StripeProductIds';
+import connectDB from '@/service/database';
+import JobPost from '@/lib/models/jobPost.model';
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
   apiVersion: '2024-06-20',
 });
 
@@ -19,21 +21,36 @@ export async function POST(request: NextRequest) {
       });
       return NextResponse.json({ errors: zodErrors }, { status: 400 });
     }
-    // const session = await stripe.checkout.sessions.create({
-    //     mode: "payment",
-    //     payment_method_types: ['card'],
-    //     line_items: [
-    //         {
-    //             price: "",
-    //             quantity: 1,
-    //         }
-    //     ],
-    //     success_url: `${process.env.HOST_NAME}/success?session_id={CHECKOUT_SESSION_ID}`,
-    //     cancel_url: `${process.env.HOST_NAME}/`
-    // })
 
-    // redirect(session.url ?? '/')
-    return NextResponse.json({ success: true });
+    const lineItems = result.data.addOns.map((v) => {
+      return {
+        price: PriceIds[v],
+        quantity: 1,
+      };
+    });
+
+    const session = await stripe.checkout.sessions.create({
+      mode: 'payment',
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price: PriceIds.post,
+          quantity: 1,
+        },
+        ...lineItems,
+      ],
+      success_url: `${process.env.HOST_NAME}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.HOST_NAME}/`,
+    });
+    console.log('session: ', session);
+
+    await connectDB();
+    const jobPost = await new JobPost({
+      sessionId: session.id,
+      ...result.data,
+    }).save();
+
+    return NextResponse.json({ url: session.url ?? '/' });
   } catch (error) {
     console.error('Internal Error:', error);
     return NextResponse.json(
