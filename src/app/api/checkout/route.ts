@@ -42,13 +42,18 @@ export async function POST(request: NextRequest) {
       success_url: `${process.env.HOST_NAME}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.HOST_NAME}/`,
     });
-    console.log('session: ', session);
 
     await connectDB();
     const jobPost = await new JobPost({
       sessionId: session.id,
       ...result.data,
     }).save();
+    if (!jobPost) {
+      return NextResponse.json(
+        { error: 'Failed to save job post to database' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ url: session.url ?? '/' });
   } catch (error) {

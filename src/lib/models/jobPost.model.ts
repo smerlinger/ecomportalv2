@@ -95,8 +95,10 @@ const JobPostSchema: Schema = new Schema({
   companyInfo: companyInfoSchema,
   jobInfo: jobInfoSchema,
   addOns: [String],
+  paymentStatus: { type: String, default: 'unpaid' },
 });
 
-const JobPost = mongoose.model<IJobPost>('JobPost', JobPostSchema);
+const JobPost =
+  mongoose.models.JobPost || mongoose.model('JobPost', JobPostSchema);
 
 export default JobPost;

@@ -1,9 +1,9 @@
 'use client';
-import { useParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 export default function Page() {
-  const params = useParams();
-  const sessionId = params.sessionId as string;
+  const params = useSearchParams();
+  const sessionId = params.get('session_id');
 
   return (
     <div>

@@ -1,12 +1,12 @@
 import { BrandBubbleProps } from '@/components/molecules/BrandBubble';
-import hhLogo from '../../public/logo/hh.png';
-import prLogo from '../../public/logo/pr.png';
-import kkLogo from '../../public/logo/kk.png';
-import bbLogo from '../../public/logo/bb.png';
-import qqLogo from '../../public/logo/qq.png';
-import toLogo from '../../public/logo/to.png';
-import ggLogo from '../../public/logo/gg.png';
-import rrLogo from '../../public/logo/rr.png';
+import hhLogo from '../../../public/logo/hh.png';
+import prLogo from '../../../public/logo/pr.png';
+import kkLogo from '../../../public/logo/kk.png';
+import bbLogo from '../../../public/logo/bb.png';
+import qqLogo from '../../../public/logo/qq.png';
+import toLogo from '../../../public/logo/to.png';
+import ggLogo from '../../../public/logo/gg.png';
+import rrLogo from '../../../public/logo/rr.png';
 
 export const BrandBubbleList: BrandBubbleProps[] = [
   {
