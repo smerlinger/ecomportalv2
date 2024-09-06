@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './jobDetails.module.css';
-import { JobDetail } from 'types';
+import { JobDetail } from '../../../types/types';
 import { JobDetailsHeader } from '@/components/organisms/JobDetailsHeader';
 import { JobDetailsItem } from '@/components/organisms/JobDetailsItem';
 import { ApplyButton } from '@/components/molecules/ApplyButton';
