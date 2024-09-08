@@ -4,69 +4,54 @@ import styles from './Post.module.css';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import { ResourceMap } from '@/constants/ContentList';
 export interface PostProps {
   _id: string;
   mainImage: SanityImageSource;
   title: string;
   description: string;
-  body: string;
-  author: string;
-  authorImage: SanityImageSource;
-  categories: string;
-  slug: string;
+  author: { name: string; image: SanityImageSource };
+  categories: { title: string }[];
+  slug: { current: string };
 }
 export const Post = ({
   mainImage,
   title,
   description,
-  body,
   author,
-  authorImage,
   categories,
   slug,
 }: PostProps) => {
-  useEffect(() => {
-    console.log(
-      'hi:',
-      title,
-      description,
-      body,
-      author,
-      authorImage,
-      categories,
-      slug
-    );
-  }, [title, description, body, author, authorImage, categories, slug]);
+  // useEffect(() => {
+  //   console.log('categories:', title, categories[0].title);
+  // }, [title, description, body, author, categories, slug]);
+  const resourceType =
+    Object.values(ResourceMap).find(
+      (item) => item.title === categories[0].title
+    )?.slug || '';
   return (
-    <div>hello</div>
-    // <Link href={`/${categories.toLowerCase()}/${slug}`}>
-    // <div className={styles.container}>
-    //   <img
-    //     loading="lazy"
-    //     className={styles.image}
-    //     // src={urlFor(image).url()}
-    //     src={
-    //       'https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/10-intelligent-dog-breeds/golden-retriever-tongue-out.jpg'
-    //     }
-    //     alt="image"
-    //   />
+    <Link href={`/${resourceType}/post/${slug.current}`}>
+      <div className={styles.container}>
+        <img
+          loading="lazy"
+          className={styles.image}
+          src={urlFor(mainImage).url()}
+          alt="image"
+        />
 
-    //   <div className={styles.body}>
-    //     <div className={styles.title}>{title}</div>
-    //     {body}
-    //     <img
-    //       className={styles.authorImage}
-    //       src={
-    //         'https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/10-intelligent-dog-breeds/golden-retriever-tongue-out.jpg'
-    //       }
-    //     />
-    //     {/* src={urlFor(authorImage).url()} /> */}
-    //     by {author}
-    //   </div>
-    //   <div className={styles.footer}>
-    //     <div className={styles.footerText}>{categories}</div>
-    //   </div>
-    // </div>
-    // </Link>
+        <div className={styles.body}>
+          <div className={styles.title}>{title}</div>
+          <div className={styles.description}>{description}</div>
+          <img
+            className={styles.authorImage}
+            src={urlFor(author.image).url()}
+          />
+          by {author.name}
+        </div>
+        <div className={styles.footer}>
+          <div className={styles.footerText}>{categories[0].title}</div>
+        </div>
+      </div>
+    </Link>
   );
 };

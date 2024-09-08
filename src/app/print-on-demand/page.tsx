@@ -1,41 +1,11 @@
 import { ContentIndex } from '@/components/templates/ContentGrid';
-import { ContentList } from '@/constants/ContentList';
-// import { sanityClient } from '@/service/sanity/client';
+import { ResourceMap } from '@/constants/ContentList';
+import { sanityClient } from '@/service/sanity/client';
 
 export default async function Page() {
-  // const posts = await sanityClient.fetch(ContentList.printOnDemand.query);
-  const header = ContentList.printOnDemand.header;
-  const posts = [
-    {
-      _id: '123',
-      image: '',
-      title: 'hello world',
-      body: 'bye world',
-      author: 'John Doe',
-      authorImage: '',
-      category: 'Blog',
-      slug: 'hello-world',
-    },
-    {
-      _id: '456',
-      image: '',
-      title: 'hello world',
-      body: 'bye world',
-      author: 'John Doe',
-      authorImage: '',
-      category: 'Blog',
-      slug: 'hello-world-2',
-    },
-    {
-      _id: '789',
-      image: '',
-      title: 'hello world',
-      body: 'bye world',
-      author: 'John Doe',
-      authorImage: '',
-      category: 'Blog',
-      slug: 'hello-world-3',
-    },
-  ];
+  const posts = await sanityClient.fetch(ResourceMap.printOnDemand.query);
+  const header = ResourceMap.printOnDemand.header;
+  console.log('posts:', posts);
+
   return <ContentIndex header={header} content={posts} />;
 }

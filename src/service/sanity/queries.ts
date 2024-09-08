@@ -10,9 +10,13 @@ const createPostQuery = (category: string) =>
   },
   description,
   mainImage,
-  slug
+  slug,
+  categories[] -> {
+    title
+  }
 }`);
 
+export const INTERVIEWS_QUERY = createPostQuery('Interviews');
 export const BLOGS_QUERY = createPostQuery('Blogs');
 export const COURSES_QUERY = createPostQuery('Courses');
 export const ECOM_PLATFORMS_QUERY = createPostQuery('eCommerce Platforms');
