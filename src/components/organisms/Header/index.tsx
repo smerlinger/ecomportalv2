@@ -17,7 +17,12 @@ export const Header = () => {
         <div className={styles.primaryItems}>
           <LogoImage />
           <Button className={styles.button}>Salary Stats</Button>
-          <Button className={styles.button}>Interviews</Button>
+          <Button
+            className={styles.button}
+            onClick={() => router.push('/interviews')}
+          >
+            Interviews
+          </Button>
           <HeaderDropDown />
         </div>
         <div className={styles.secondaryItems}>

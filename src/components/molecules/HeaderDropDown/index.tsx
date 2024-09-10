@@ -27,7 +27,7 @@ export const HeaderDropDown = () => {
               <DropdownMenu.Item
                 className={styles.item}
                 disabled={item.disabled}
-                onClick={() => router.push('/')}
+                onClick={() => router.push(item.link)}
               >
                 {item.title}
               </DropdownMenu.Item>

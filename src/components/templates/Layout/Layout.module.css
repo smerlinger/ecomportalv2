@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: var(--font-montserrat);
+}
+
+.container {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  gap: 1rem;
+}
+
+@media (min-width: 1280px) {
+  .padding {
+    padding: 0 2.5rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .padding {
+    padding: 0 8rem;
+  }
+}
