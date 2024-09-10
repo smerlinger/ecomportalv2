@@ -1,6 +1,6 @@
-import '@/utils/styles/globals.css';
-import { inter, montserrat } from '@/utils/fonts';
-import { cn } from '@/utils/styles/classNames';
+import '@/lib/utils/styles/globals.css';
+import { inter, montserrat } from '@/lib/utils/fonts';
+import { cn } from '@/lib/utils/styles/classNames';
 
 export const metadata = {
   title: 'Ecomportal',

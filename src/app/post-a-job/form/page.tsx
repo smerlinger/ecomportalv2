@@ -1,5 +1,5 @@
 'use client';
-import { PostAJobFormSchema } from '@/schemas/schemas';
+import { postAJobFormSchema } from '@/lib/schemas/schemas';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { EditableInput } from '@/components/molecules/EditableTextInput';
@@ -9,9 +9,11 @@ import styles from './page.module.css';
 import { Banner } from '@/components/atoms/Banner';
 import { Header } from '@/components/organisms/Header';
 import FileUpload from '@/components/FileUpload';
-import { PostAJobForm } from '@/types/types';
-import { jobCategories } from '@/constants/JobCategoriesList';
-import { jobTypes } from '@/constants/JobTypesList';
+import { PostAJobForm } from '@/lib/types/types';
+import { jobCategories } from '@/lib/constants/JobCategoriesList';
+import { jobTypes } from '@/lib/constants/JobTypesList';
+import CheckboxGroup from '@/components/Checkbox';
+import { addOnOptions } from '@/lib/constants/AddOnOptionsList';
 
 export default function Page() {
   const {
@@ -19,10 +21,136 @@ export default function Page() {
     control,
     getValues,
     formState: { errors },
+    reset,
+    setError,
   } = useForm<PostAJobForm>({
-    resolver: zodResolver(PostAJobFormSchema),
+    resolver: zodResolver(postAJobFormSchema),
   });
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = async (data: PostAJobForm) => {
+    console.log(data);
+    // send data to backend
+    const response = await fetch('/api/checkout', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const responseData = await response.json();
+    if (!response.ok) {
+      alert('Submitting form failed!');
+      return;
+    }
+
+    if (responseData.errors) {
+      const errors = responseData.errors;
+      if (errors.companyInfo?.email) {
+        setError('companyInfo.email', {
+          type: 'server',
+          message: errors.companyInfo.email,
+        });
+      }
+      if (errors.companyInfo?.name) {
+        setError('companyInfo.name', {
+          type: 'server',
+          message: errors.companyInfo.name,
+        });
+      }
+      if (errors.companyInfo?.url) {
+        setError('companyInfo.url', {
+          type: 'server',
+          message: errors.companyInfo.url,
+        });
+      }
+      if (errors.companyInfo?.logo) {
+        setError('companyInfo.logo', {
+          type: 'server',
+          message: errors.companyInfo.logo,
+        });
+      }
+      if (errors.jobInfo?.title) {
+        setError('jobInfo.title', {
+          type: 'server',
+          message: errors.jobInfo.title,
+        });
+      }
+      if (errors.jobInfo?.category) {
+        setError('jobInfo.category', {
+          type: 'server',
+          message: errors.jobInfo.category,
+        });
+      }
+      if (errors.jobInfo?.location?.city) {
+        setError('jobInfo.location.city', {
+          type: 'server',
+          message: errors.jobInfo.location.city,
+        });
+      }
+      if (errors.jobInfo?.location?.state) {
+        setError('jobInfo.location.state', {
+          type: 'server',
+          message: errors.jobInfo.location.state,
+        });
+      }
+      if (errors.jobInfo?.location?.country) {
+        setError('jobInfo.location.country', {
+          type: 'server',
+          message: errors.jobInfo.location.country,
+        });
+      }
+      if (errors.jobInfo?.employeeCount) {
+        setError('jobInfo.employeeCount', {
+          type: 'server',
+          message: errors.jobInfo.employeeCount,
+        });
+      }
+      if (errors.jobInfo?.jobType) {
+        setError('jobInfo.jobType', {
+          type: 'server',
+          message: errors.jobInfo.jobType,
+        });
+      }
+      if (errors.jobInfo?.applicationUrl) {
+        setError('jobInfo.applicationUrl', {
+          type: 'server',
+          message: errors.jobInfo.applicationUrl,
+        });
+      }
+      if (errors.jobInfo?.salary?.min) {
+        setError('jobInfo.salary.min', {
+          type: 'server',
+          message: errors.jobInfo.salary.min,
+        });
+      }
+      if (errors.jobInfo?.salary?.max) {
+        setError('jobInfo.salary.max', {
+          type: 'server',
+          message: errors.jobInfo.salary.max,
+        });
+      }
+      if (errors.jobInfo?.description) {
+        setError('jobInfo.description', {
+          type: 'server',
+          message: errors.jobInfo.description,
+        });
+      }
+      if (errors.jobInfo?.requirements) {
+        setError('jobInfo.requirements', {
+          type: 'server',
+          message: errors.jobInfo.requirements,
+        });
+      }
+      if (errors.addOns) {
+        setError('addOns', { type: 'server', message: errors.addOns });
+      }
+
+      reset();
+    }
+
+    console.log(responseData);
+
+    window.location.assign(responseData.url as string);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -280,6 +408,20 @@ export default function Page() {
                 value={getValues('jobInfo.requirements') ?? ''}
                 onChange={field.onChange}
                 error={errors.jobInfo?.requirements?.message}
+                ref={field.ref}
+              />
+            )}
+          />
+          <Controller
+            name="addOns"
+            control={control}
+            defaultValue={[]}
+            render={({ field }) => (
+              <CheckboxGroup
+                {...field}
+                value={field.value}
+                options={addOnOptions}
+                onChange={field.onChange}
                 ref={field.ref}
               />
             )}

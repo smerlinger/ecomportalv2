@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import logo from '../../../../public/logo/logoFooter.png';
 import { LinkedinLogo, MetaLogo, TwitterLogo } from '@phosphor-icons/react';
 import React from 'react';
-import { FooterCityList, FooterJobList } from '@/constants/FooterItemList';
+import { FooterCityList, FooterJobList } from '@/lib/constants/FooterItemList';
 import Link from 'next/link';
 import { SocialMediaButton } from '@/components/molecules/SocialMediaButton';
 

@@ -2,7 +2,7 @@ import { Banner } from '@/components/atoms/Banner';
 import styles from './page.module.css';
 import { Header } from '@/components/organisms/Header';
 import { Footer } from '@/components/organisms/Footer';
-import { JobDetail } from '@/types/types';
+import { JobDetail } from '@/lib/types/types';
 import { JobDetails } from '@/components/templates/JobDetails';
 import { ApplyButton } from '@/components/molecules/ApplyButton';
 
