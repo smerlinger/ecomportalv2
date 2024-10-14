@@ -10,11 +10,11 @@ import styles from './homeIntro.module.css';
 export const HomeIntro = () => {
   return (
     <div className={styles.wrapper}>
-      {BrandBubbleList.map((item: BrandBubbleProps, index: number) => (
-        <Fragment key={`brand-bubble-${index}`}>
-          <BrandBubble index={index} image={item.image} style={item.style} />
-        </Fragment>
-      ))}
+      {/* {BrandBubbleList.map((item: BrandBubbleProps, index: number) => (
+        // <Fragment key={`brand-bubble-${index}`}>
+        //   <BrandBubble index={index} image={item.image} style={item.style} />
+        // </Fragment>
+      ))} */}
 
       <div className={styles.container}>
         <h1 className={styles.heading}>

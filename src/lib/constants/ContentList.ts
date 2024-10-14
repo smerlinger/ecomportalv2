@@ -10,7 +10,7 @@ import {
   TOP_CANADIAN_BRANDS_QUERY,
   GETTING_HIRED_QUERY,
   INTERVIEWS_QUERY,
-} from '../service/sanity/queries';
+} from '../../service/sanity/queries';
 
 export const ResourceMap = {
   interviews: {

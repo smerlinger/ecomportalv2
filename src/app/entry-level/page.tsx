@@ -1,5 +1,5 @@
 import { ContentIndex } from '@/components/templates/ContentGrid';
-import { ResourceMap } from '@/constants/ContentList';
+import { ResourceMap } from '@/lib/constants/ContentList';
 import { sanityClient } from '@/service/sanity/client';
 
 export default async function Page() {

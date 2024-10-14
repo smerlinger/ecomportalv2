@@ -4,7 +4,7 @@ import styles from './Post.module.css';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import Link from 'next/link';
 import { useEffect } from 'react';
-import { ResourceMap } from '@/constants/ContentList';
+import { ResourceMap } from '../../../lib/constants/ContentList';
 export interface PostProps {
   _id: string;
   mainImage: SanityImageSource;
